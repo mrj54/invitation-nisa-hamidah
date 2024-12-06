@@ -15,114 +15,158 @@
             line-height: 1.6;
         }
 
-        .floral-divider {
-            background-image: linear-gradient(to right, transparent, #d1fae5, transparent);
-            height: 2px;
-            margin: 2rem 0;
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        .flower-decoration {
-            position: absolute;
-            opacity: 0.5;
-            z-index: -1;
+        .card {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 10;
         }
 
         .title-text {
             font-family: 'Dancing Script', cursive;
         }
+
+        .section-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 1;
+            background-blend-mode: multiply;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
-    <div class="container mx-auto px-4 max-w-2xl relative">
-        <!-- Flower Decorations -->
-        <img src="/api/placeholder/200/200" alt="Flower Top Left" class="flower-decoration top-0 left-0 w-48 h-48">
-        <img src="/api/placeholder/200/200" alt="Flower Bottom Right"
-            class="flower-decoration bottom-0 right-0 w-48 h-48">
-
-        <div class="text-center py-12">
-            <h1 class="text-4xl title-text font-bold text-green-700 mb-4">Undangan Pernikahan</h1>
-            <div class="floral-divider"></div>
+<body class="bg-gray-50 text-gray-800 p-4">
+    <div class="card-container">
+        <div class="card">
+            <div class="section-background"
+                style="background-image: url('./asset/bacground\ 1.jpeg'); background-color: #e6f3e6;">
+            </div>
+            <div class="card-content">
+                <h1 class="text-4xl title-text font-bold text-green-700 mb-4">Undangan Pernikahan</h1>
+                <h2 class="text-3xl title-text font-bold text-green-800 mb-2">Nisa & Sahrul</h2>
+                <p class="text-gray-600">Akan melangsungkan pernikahan</p>
+            </div>
         </div>
 
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <div class="text-center">
-                <img src="/assets/wedding-ring.png" alt="Wedding Ring" class="w-24 h-24 mx-auto mb-4">
-                <h2 class="text-3xl title-text font-bold text-green-800 mb-2">Nisa & Sahrul</h2>
-                <p class="text-gray-600">Akan melangsungkan pernikahan suci</p>
+        <div class="card">
+            <div class="section-background"
+                style="background-image: url('./asset/bc\ 2.jpeg'); background-color: #f0f8ff;"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Doa</h3>
+                <p class="italic">
+                    "Dan diantara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari
+                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan
+                    diantaramu rasa kasih dan sayang."
+                    <br>
+                    <span class="text-sm">(QS. AR Rum:21)</span>
+                </p>
             </div>
-        </section>
+        </div>
 
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Doa</h3>
-            <p class="italic text-center">
-                "Dan diantara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari
-                jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan
-                diantaramu rasa kasih dan sayang."
-                <br>
-                <span class="text-sm">(QS. AR Rum:21)</span>
-            </p>
-        </section>
-
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8 flex items-center">
-            <img src="/assets/bride.png" alt="Bride" class="w-32 h-32 mr-6 rounded-full">
-            <div>
+        <div class="card">
+            <div class="section-background"
+                style="background-image: url('./asset/bc\ 3.jpeg'); background-color: #fff0f5;"></div>
+            <div class="card-content">
                 <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Perempuan</h3>
+                <img src="/api/placeholder/128/128?text=Bride" alt="Bride" class="w-32 h-32 mx-auto mb-4 rounded-full">
                 <h4 class="font-bold">Nisa Hamdiah, S.Pd.</h4>
-                <p class="text-gray-600">Putri Pertama dari Bapak dedi hidayatul aziz dan Ibu ai Latifah</p>
+                <p class="text-gray-600">Putri keempat dari Bapak Dedi Hidayatul Aziz dan Ibu Ai Latifah</p>
             </div>
-        </section>
+        </div>
 
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8 flex items-center">
-            <img src="/assets/groom.png" alt="Groom" class="w-32 h-32 mr-6 rounded-full">
-            <div>
+        <div class="card">
+            <div class="section-background"
+                style="background-image: url('./asset/bc\ 3.jpeg'); background-color: #f5f5dc;"></div>
+            <div class="card-content">
                 <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Laki-laki</h3>
-                <h4 class="font-bold">Asep Sahrul magfiroh, S.Pd.</h4>
-                <p class="text-gray-600">Putra Pertama dari Bapak ahmad saefuloh albar dan ibu ai cucu rahmawati</p>
+                <img src="/api/placeholder/128/128?text=Groom" alt="Groom" class="w-32 h-32 mx-auto mb-4 rounded-full">
+                <h4 class="font-bold">Asep Sahrul Magfiroh, S.Pd.</h4>
+                <p class="text-gray-600">Putra Pertama dari Bapak Ahmad Saefuloh Albar dan Ibu Ai Cucu Rahmawati</p>
             </div>
-        </section>
+        </div>
 
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Akad Nikah</h3>
-            <div class="text-center">
+        <div class="card">
+            <div class="section-background"
+                style="background-image: url('./asset/bc\ 4.jpeg'); background-color: #e6e6fa;">
+            </div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Akad Nikah</h3>
                 <p>Sabtu, 25 Januari 2023</p>
                 <p>Pukul: 08.15 WIB</p>
                 <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
                 <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
             </div>
-        </section>
+        </div>
 
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Resepsi Pernikahan</h3>
-            <div class="text-center">
-                <p>Sabtu, 25 Januari 2023</p>
-                <p>Pukul: 15.15 WIB s/d 14.10</p>
-                <p class="text-gray-600">Rumah Mempelai Perempuan</p>
-                <p class="text-gray-600">Jalan Raya Banjarwangi, KM. 23, B/20</p>
-                <p class="text-gray-600">Dr. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
-            </div>
-        </section>
-
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Kirim Pesan</h3>
-            <div class="text-center">
-                <p>088320602621 (Sahrul)</p>
-                <p>085647143521 (Nisa)</p>
-                <p>415600444667536 (BRI)</p>
-                <p>0142039567100 (Bank BJB)</p>
-            </div>
-        </section>
-
-        <section class="bg-white rounded-lg shadow-md p-8 mb-8 text-center">
-            <h3 class="text-3xl title-text font-bold text-green-800 mb-4">Terima Kasih</h3>
-            <p class="italic">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
-            <div class="flex justify-center items-center mt-6">
-                <img src="/assets/bride-and-groom.png" alt="Bride and Groom" class="w-48 h-48">
-            </div>
-        </section>
+    <div class="card">
+        <div class="section-background" style="background-image: url('./asset/bc\ 4.jpeg'); background-color: #e6e6fa;">
+        </div>
+        <div class="card-content">
+            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara resepsi</h3>
+            <p>Sabtu, 25 Januari 2023</p>
+            <p>Pukul: 08.15 WIB</p>
+            <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
+            <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
+        </div>
     </div>
-    <footer
-        style="text-align: center; padding: 20px; background-color: #f1f1f1; position: relative; bottom: 0; width: 100%;">
+
+        <div class="card">
+            <div class="section-background"
+                style="background-image: url('./asset/bc\ 6.jpeg'); background-color: #f0fff0;">
+            </div>
+            <div class="card-content">
+                <h3 class="text-3xl title-text font-bold text-green-800 mb-4">Terima Kasih</h3>
+                <p class="italic mb-4">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
+                <img src="/api/placeholder/192/192?text=Bride+Groom" alt="Bride and Groom" class="w-48 h-48 mx-auto">
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-background" style="background-image: url('./asset/bc\ pay.jpeg'); background-color: #f0fff0;">
+        </div>
+        <div class="card-content">
+            <h3 class="text-3xl title-text font-bold text-green-800 mb-4">Terima Kasih</h3>
+            <p class="italic mb-4">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
+            <img src="/api/placeholder/192/192?text=Bride+Groom" alt="Bride and Groom" class="w-48 h-48 mx-auto">
+        </div>
+    </div>
+    </div>
+    <footer class="text-center mt-8 p-4 bg-gray-100">
         <p>&copy; 2024 Marjan. All rights reserved.</p>
     </footer>
 </body>
