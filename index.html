@@ -169,6 +169,76 @@
     <footer class="text-center mt-8 p-4 bg-gray-100">
         <p>&copy; 2024 Marjan. All rights reserved.</p>
     </footer>
+
+    <script>
+    // Add styles for card reveal
+   document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.card');
+
+        // Smooth, elegant text reveal
+        function elegantTextReveal(element) {
+            const text = element.textContent;
+            element.textContent = '';
+            element.style.opacity = '1';
+
+            let index = 0;
+            function revealCharacter() {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                    setTimeout(revealCharacter, 50); // Adjust speed for smoothness
+                }
+            }
+            revealCharacter();
+        }
+
+        // Reveal cards on scroll with smooth animation
+        function revealOnScroll() {
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (cardTop < windowHeight * 0.8) {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+
+                        // Reveal title text for this card
+                        const titleText = card.querySelector('.title-text');
+                        if (titleText) {
+                            elegantTextReveal(titleText);
+                        }
+                    }, index * 200);
+                }
+            });
+        }
+
+        // Initial setup
+        function initializeAnimation() {
+            // Hide cards initially
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+
+                // Hide title text initially
+                const titleText = card.querySelector('.title-text');
+                if (titleText) {
+                    titleText.style.opacity = '0';
+                }
+            });
+
+            // Add scroll listener
+            window.addEventListener('scroll', revealOnScroll);
+
+            // Initial reveal check
+            revealOnScroll();
+        }
+
+        // Initialize
+        initializeAnimation();
+    });
+   </script>
 </body>
 
 </html>
