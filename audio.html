@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoplay Audio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        audio {
+            display: none;
+            /* Sembunyikan kontrol audio */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Audio Autoplay Example</h1>
+    <p>Musik akan diputar secara otomatis saat halaman dimuat.</p>
+
+    <!-- Elemen audio -->
+    <audio id="myAudio" autoplay>
+        <source src="./audio/WhatsApp Audio 2024-12-07 at 17.57.57.mpeg" type="audio/mpeg">
+        <source src="./audio/WhatsApp Audio 2024-12-07 at 17.57.57.mpeg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Pastikan audio diputar setelah halaman dimuat
+        window.addEventListener('load', () => {
+            const audio = document.getElementById('myAudio');
+
+            // Coba memutar audio
+            audio.play().then(() => {
+                console.log("Audio autoplay berhasil!");
+            }).catch(error => {
+                console.log("Autoplay gagal:", error);
+
+                // Fallback: Mulai audio setelah interaksi pengguna
+                document.addEventListener('click', () => {
+                    audio.play();
+                    console.log("Audio diputar setelah interaksi pengguna.");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
