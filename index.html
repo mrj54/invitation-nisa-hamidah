@@ -13,53 +13,31 @@
             font-family: 'Playfair Display', serif;
             background-color: #f0f4f8;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
         .card-container {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
         }
 
         .card {
             width: 100%;
-            aspect-ratio: 3/4;
-            background-color: transparent;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 2rem;
             position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(50px);
+            opacity: 1;
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .card-content {
-            position: relative;
-            z-index: 10;
-
-            padding: 1rem;
-            border-radius: 0.75rem;
-        }
-
-        .title-text {
-            font-family: 'Dancing Script', cursive;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .section-background {
+        .card .section-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -69,19 +47,27 @@
             background-position: center;
             z-index: 1;
             filter: brightness(1.1);
-            /* Slightly brigh the image */
         }
 
-        /* Ensure background images are fully visible */
-        .card .section-background {
-            opacity: 1;
-            mix-blend-mode: normal;
+        .card-content {
+            position: relative;
+            z-index: 10;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .title-text {
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .countdown-container {
             display: flex;
             justify-content: space-between;
-            margin-top: 120px;
+            margin-top: 90px;
         }
 
         .countdown-item {
@@ -102,261 +88,217 @@
             font-size: 0.75rem;
             color: #064e3b;
         }
+
+        /* Highlight current section while scrolling */
+        .card.active {
+            opacity: 1;
+            transform: scale(1.02);
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+        }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 p-4">
-    <div class="card-container">
-        <div class="card">
+<body class="bg-gray-50 text-gray-800">
+    <div class="card-container" id="cardContainer">
+        <div class="card" id="card1">
             <div class="section-background" style="background-image: url('./asset/bg\ 1-1.jpeg');"></div>
             <div class="card-content flex flex-col items-center">
-                <br>
-                <br>
-                <br><br>
+                <br><br><br><br>
                 <h1 class="text-4xl title-text font-bold text-green-700 mb-4">Undangan Pernikahan</h1>
                 <h2 class="text-3xl title-text font-bold text-green-800 mb-2">Nisa & Sahrul</h2>
                 <img src="./asset/WhatsApp_Image_2024-12-07_at_13.27.56-removebg-preview.png" alt="Pernikahan"
                     class="w-1/2 h-auto mt-2">
             </div>
         </div>
-    </div>
-</body>
-<div class="card">
-    <div class="section-background" style="background-image: url('./asset/bc 2.jpeg');"></div>
-    <div class="card-content">
-        <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Doa</h3>
-        <p class="italic">
-            "Dan diantara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari
-            jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan diantaramu
-            rasa kasih dan sayang."
-            <br>
-            <span class="text-sm">(QS. AR Rum:21)</span>
-        </p>
-    </div>
-</div>
 
-<div class="card">
-    <div class="section-background" style="background-image: url('./asset/bc 3.jpeg');"></div>
-    <div class="card-content">
-        <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Perempuan</h3>
-        <img src="./asset/brige__1_-removebg-preview.png" alt="Bride" class="w-48 h-48 mx-auto mb-4">
-        <!-- Ukuran gambar diperbesar -->
-        <h4 class="font-bold text-lg">Nisa Hamdiah, S.Pd.</h4> <!-- Ukuran teks sedikit lebih kecil -->
-        <p class="text-gray-600 text-sm">Putri keempat dari Bapak Dedi Hidayatul Aziz dan Ibu Ai Latifah</p>
-        <!-- Ukuran teks lebih kecil -->
-    </div>
-</div>
-
-<div class="card">
-    <div class="section-background" style="background-image: url('./asset/bc 3.jpeg');"></div>
-    <div class="card-content">
-        <h3 class="text-2xl title-text font-bold text-green-800 mb-2">mempelai Laki-laki</h3>
-        <img src="./asset/bro__1_-removebg-preview.png" alt="Bride" class="w-48 h-48 mx-auto mb-4">
-        <!-- Ukuran gambar diperbesar -->
-        <h4 class="font-bold text-lg">sep Sahrul Magfiroh, S.Pd.</h4> <!-- Ukuran teks sedikit lebih kecil -->
-        <p class="text-gray-600 text-sm">Putra Pertama dari Bapak Ahmad Saefuloh Albar dan Ibu Ai Cucu Rahmawati</p>
-        <!-- Ukuran teks lebih kecil -->
-    </div>
-</div>
-
-
-<div class="card">
-    <div class="section-background" style="background-image: url('./asset/bc 4.jpeg');"></div>
-    <div class="card-content">
-        <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Akad Nikah</h3>
-        <p>Sabtu, 25 Januari 2023</p>
-        <p>Pukul: 08.15 WIB</p>
-        <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
-        <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
-    </div>
-</div>
-
-<div class="card">
-    <div class="section-background" style="background-image: url('./asset/bc 4.jpeg');"></div>
-    <div class="card-content">
-        <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara Resepsi</h3>
-        <p>Sabtu, 25 Januari 2023</p>
-        <p>Pukul: 08.15 WIB</p>
-        <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
-        <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
-
-        <!-- Memindahkan countdown ke dalam card-content -->
-        <div id="countdown" class="countdown-container mt-8"> <!-- Menambahkan margin atas lebih besar -->
-            <div class="countdown-item">
-                <div id="days" class="number">00</div>
-                <div class="label">Hari</div>
+        <div class="card" id="card2">
+            <div class="section-background" style="background-image: url('./asset/bc\ 2.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Doa</h3>
+                <p class="italic">
+                    "Dan diantara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari
+                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan diantaramu
+                    rasa kasih dan sayang."
+                    <br>
+                    <span class="text-sm">(QS. AR Rum:21)</span>
+                </p>
             </div>
-            <div class="countdown-item">
-                <div id="hours" class="number">00</div>
-                <div class="label">Jam</div>
+        </div>
+
+        <div class="card" id="card3">
+            <div class="section-background" style="background-image: url('./asset/bc\ 3.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Perempuan</h3>
+                <img src="./asset/brige__1_-removebg-preview.png" alt="Bride" class="w-48 h-48 mx-auto mb-4">
+                <h4 class="font-bold text-lg">Nisa Hamdiah, S.Pd.</h4>
+                <p class="text-gray-600 text-sm">Putri keempat dari Bapak Dedi Hidayatul Aziz dan Ibu Ai Latifah</p>
             </div>
-            <div class="countdown-item">
-                <div id="minutes" class="number">00</div>
-                <div class="label">Menit</div>
+        </div>
+
+        <div class="card" id="card4">
+            <div class="section-background" style="background-image: url('./asset/bc\ 3.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Laki-laki</h3>
+                <img src="./asset/bro__1_-removebg-preview.png" alt="Groom" class="w-48 h-48 mx-auto mb-4">
+                <h4 class="font-bold text-lg">Sep Sahrul Magfiroh, S.Pd.</h4>
+                <p class="text-gray-600 text-sm">Putra Pertama dari Bapak Ahmad Saefuloh Albar dan Ibu Ai Cucu Rahmawati
+                </p>
             </div>
-            <div class="countdown-item">
-                <div id="seconds" class="number">00</div>
-                <div class="label">Detik</div>
+        </div>
+
+        <div class="card" id="card5">
+            <div class="section-background" style="background-image: url('./asset/bc\ 4.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Akad Nikah</h3>
+                <p>Sabtu, 25 Januari 2023</p>
+                <p>Pukul: 08.15 WIB</p>
+                <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
+                <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
+            </div>
+        </div>
+
+        <div class="card" id="card6">
+            <div class="section-background" style="background-image: url('./asset/bc\ 4.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara Resepsi</h3>
+                <p>Sabtu, 25 Januari 2023</p>
+                <p>Pukul: 08.15 WIB</p>
+                <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
+                <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
+
+                <div id="countdown" class="countdown-container mt-8">
+                    <div class="countdown-item">
+                        <div id="days" class="number">00</div>
+                        <div class="label">Hari</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="hours" class="number">00</div>
+                        <div class="label">Jam</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="minutes" class="number">00</div>
+                        <div class="label">Menit</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="seconds" class="number">00</div>
+                        <div class="label">Detik</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="card7">
+            <div class="section-background" style="background-image: url('./asset/bc\ 6.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-3xl title-text font-bold text-green-800 mt-24 mb-4">Terima Kasih</h3>
+                <p class="italic mb-8">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
+                <img src="./asset/bro_n_sis__1_-removebg-preview.png" alt="Bride and Groom"
+                    class="w-64 h-64 mx-auto mt-8" style="margin-top: -20px;">
             </div>
         </div>
     </div>
-</div>
 
-<div class="card">
-    <div class="section-background" style="background-image: url('./asset/bc 6.jpeg');"></div>
-    <div class="card-content">
-        <h3 class="text-3xl title-text font-bold text-green-800 mt-24 mb-4">Terima Kasih</h3>
-        <p class="italic mb-8">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
-        <img src="./asset/bro_n_sis__1_-removebg-preview.png" alt="Bride and Groom" class="w-64 h-64 mx-auto mt-8"
-            style="margin-top: -20px;"> <!-- Menggunakan margin negatif -->
-    </div>
-</div>
+    <audio id="myAudio" autoplay>
+        <source src="./audio/WhatsApp Audio 2024-12-07 at 17.57.57.mpeg" type="audio/mpeg">
+        <source src="./audio/WhatsApp Audio 2024-12-07 at 17.57.57.mpeg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
 
-<audio id="myAudio" autoplay>
-    <source src="./audio/WhatsApp Audio 2024-12-07 at 17.57.57.mpeg" type="audio/mpeg">
-    <source src="./audio/WhatsApp Audio 2024-12-07 at 17.57.57.mpeg" type="audio/ogg">
-    Your browser does not support the audio element.
-</audio>
+    <footer class="text-center mt-8 p-4 bg-gray-100">
+        <p>&copy; 2024 Marjan. All rights reserved.</p>
+    </footer>
 
-<footer class="text-center mt-8 p-4 bg-gray-100">
-    <p>&copy; 2024 Marjan. All rights reserved.</p>
-</footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            let currentCardIndex = 0;
+            let autoScrollInterval;
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.card');
-        // Track which cards have been revealed to prevent re-animation
-        const revealedCards = new Set();
+            // Function to highlight current section based on scroll position
+            function highlightCurrentSection() {
+                const scrollPosition = window.scrollY;
+                cards.forEach((card, index) => {
+                    const cardTop = card.offsetTop;
+                    const cardHeight = card.offsetHeight;
 
-        // Reveal cards on scroll with smooth animation
-        function revealOnScroll() {
-            cards.forEach((card, index) => {
-                const cardTop = card.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (cardTop < windowHeight * 0.8 && !revealedCards.has(card)) {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-
-                        // Reveal title text for this card
-                        const titleText = card.querySelector('.title-text');
-                        if (titleText) {
-                            elegantTextReveal(titleText);
-                        }
-
-                        // Mark this card as revealed
-                        revealedCards.add(card);
-                    }, index * 200);
-                }
-            });
-        }
-
-        // Function to reveal title text with morphing animation
-        function elegantTextReveal(element) {
-            // Ensure full text is shown correctly from the start
-            element.style.opacity = '1';
-
-            // Create a temporary element to split text into characters
-            const tempElement = document.createElement('span');
-            tempElement.innerHTML = element.textContent
-                .split('')
-                .map(char => `<span class="char" style="opacity: 0;">${char}</span>`)
-                .join('');
-
-            // Replace original text with character-wrapped version
-            element.innerHTML = '';
-            element.appendChild(tempElement);
-
-            // Animate characters
-            const chars = element.querySelectorAll('.char');
-            chars.forEach((char, index) => {
-                setTimeout(() => {
-                    char.style.opacity = '1';
-                    char.style.transition = 'opacity 0.3s ease';
-                }, index * 50);
-            });
-        }
-
-        // Initial setup
-        function initializeAnimation() {
-            // Add scroll listener
-            window.addEventListener('scroll', revealOnScroll);
-
-            // Initial reveal check
-            revealOnScroll();
-        }
-
-        // Initialize
-        initializeAnimation();
-    });
-
-    function pad(num) {
-        return num.toString().padStart(2, '0');
-    }
-
-    // Function to update the countdown
-    function updateCountdown() {
-        // Target date: January 25, 2025
-        const targetDate = new Date('2025-01-25T08:15:00').getTime();
-
-        // Get current time
-        const now = new Date().getTime();
-
-        // Calculate the difference
-        let difference = targetDate - now;
-
-        // If the target date has passed, reset the countdown
-        if (difference < 0) {
-            // Reset to the next occurrence of the target date
-            const currentYear = new Date().getFullYear();
-            const nextTargetDate = new Date(currentYear, 0, 25, 8, 15).getTime();
-
-            if (nextTargetDate < now) {
-                // If this year's date has passed, use next year
-                difference = new Date(currentYear + 1, 0, 25, 8, 15).getTime() - now;
-            } else {
-                difference = nextTargetDate - now;
+                    if (scrollPosition >= cardTop && scrollPosition < cardTop + cardHeight) {
+                        cards.forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        currentCardIndex = index;
+                    }
+                });
             }
-        }
 
-        // Calculate days, hours, minutes, seconds
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            // Auto scroll function
+            function autoScroll() {
+                // Scroll to next card
+                currentCardIndex = (currentCardIndex + 1) % cards.length;
+                cards[currentCardIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
 
-        // Update DOM elements
-        document.getElementById('days').textContent = pad(days);
-        document.getElementById('hours').textContent = pad(hours);
-        document.getElementById('minutes').textContent = pad(minutes);
-        document.getElementById('seconds').textContent = pad(seconds);
-    }
+            // Start auto-scroll every 4 seconds
+            autoScrollInterval = setInterval(autoScroll, 4000);
 
-    // Initial call to display countdown immediately
-    updateCountdown();
+            // Add scroll event listener to track current section
+            window.addEventListener('scroll', highlightCurrentSection);
 
-    // Update countdown every second
-    setInterval(updateCountdown, 1000);
+            // Pause auto-scroll on user interaction
+            document.addEventListener('wheel', () => {
+                clearInterval(autoScrollInterval);
+            });
 
-     window.addEventListener('load', () => {
+            // Audio autoplay handling
             const audio = document.getElementById('myAudio');
-
-            // Coba memutar audio
-            audio.play().then(() => {
-                console.log("Audio autoplay berhasil!");
-            }).catch(error => {
-                console.log("Autoplay gagal:", error);
-
-                // Fallback: Mulai audio setelah interaksi pengguna
+            audio.play().catch(error => {
                 document.addEventListener('click', () => {
                     audio.play();
-                    console.log("Audio diputar setelah interaksi pengguna.");
                 });
             });
-        });
 
-</script>
+            // Countdown function (same as previous implementation)
+            function pad(num) {
+                return num.toString().padStart(2, '0');
+            }
+
+            function updateCountdown() {
+                const targetDate = new Date('2025-01-25T08:15:00').getTime();
+                const now = new Date().getTime();
+                let difference = targetDate - now;
+
+                if (difference < 0) {
+                    const currentYear = new Date().getFullYear();
+                    const nextTargetDate = new Date(currentYear, 0, 25, 8, 15).getTime();
+
+                    if (nextTargetDate < now) {
+                        difference = new Date(currentYear + 1, 0, 25, 8, 15).getTime() - now;
+                    } else {
+                        difference = nextTargetDate - now;
+                    }
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = pad(days);
+                document.getElementById('hours').textContent = pad(hours);
+                document.getElementById('minutes').textContent = pad(minutes);
+                document.getElementById('seconds').textContent = pad(seconds);
+            }
+
+            // Initial countdown call and update every second
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Highlight first card initially
+            cards[0].classList.add('active');
+        });
+    </script>
 </body>
 
 </html>
