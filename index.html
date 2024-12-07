@@ -77,6 +77,30 @@
             opacity: 1;
             mix-blend-mode: normal;
         }
+         .countdown-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background-color: rgba(16, 185, 129, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            width: 23%;
+        }
+
+        .countdown-item .number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #065f46;
+        }
+
+        .countdown-item .label {
+            font-size: 0.75rem;
+            color: #064e3b;
+        }
     </style>
 </head>
 
@@ -146,16 +170,37 @@
             </div>
         </div>
 
-        <div class="card">
-            <div class="section-background" style="background-image: url('./asset/bc 4.jpeg');"></div>
-            <div class="card-content">
-                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara resepsi</h3>
-                <p>Sabtu, 25 Januari 2023</p>
-                <p>Pukul: 08.15 WIB</p>
-                <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
-                <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
+    <div class="card">
+        <div class="section-background" style="background-image: url('./asset/bc 4.jpeg');"></div>
+        <div class="card-content">
+            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara Resepsi</h3>
+            <p>Sabtu, 25 Januari 2023</p>
+            <p>Pukul: 08.15 WIB</p>
+            <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
+            <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
+    
+            <!-- Memindahkan countdown ke dalam card-content -->
+            <div id="countdown" class="countdown-container mt-4">
+                <div class="countdown-item">
+                    <div id="days" class="number">00</div>
+                    <div class="label">Hari</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="hours" class="number">00</div>
+                    <div class="label">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="minutes" class="number">00</div>
+                    <div class="label">Menit</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="seconds" class="number">00</div>
+                    <div class="label">Detik</div>
+                </div>
             </div>
         </div>
+    </div>
+
 
         <div class="card">
             <div class="section-background" style="background-image: url('./asset/bc 6.jpeg');"></div>
@@ -239,6 +284,54 @@
             // Initialize
             initializeAnimation();
         });
+
+        function pad(num) {
+                return num.toString().padStart(2, '0');
+            }
+
+            // Function to update the countdown
+            function updateCountdown() {
+                // Target date: January 25, 2025
+                const targetDate = new Date('2025-01-25T08:15:00').getTime();
+
+                // Get current time
+                const now = new Date().getTime();
+
+                // Calculate the difference
+                let difference = targetDate - now;
+
+                // If the target date has passed, reset the countdown
+                if (difference < 0) {
+                    // Reset to the next occurrence of the target date
+                    const currentYear = new Date().getFullYear();
+                    const nextTargetDate = new Date(currentYear, 0, 25, 8, 15).getTime();
+
+                    if (nextTargetDate < now) {
+                        // If this year's date has passed, use next year
+                        difference = new Date(currentYear + 1, 0, 25, 8, 15).getTime() - now;
+                    } else {
+                        difference = nextTargetDate - now;
+                    }
+                }
+
+                // Calculate days, hours, minutes, seconds
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                // Update DOM elements
+                document.getElementById('days').textContent = pad(days);
+                document.getElementById('hours').textContent = pad(hours);
+                document.getElementById('minutes').textContent = pad(minutes);
+                document.getElementById('seconds').textContent = pad(seconds);
+            }
+
+            // Initial call to display countdown immediately
+            updateCountdown();
+
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
     </script>
 </body>
 
