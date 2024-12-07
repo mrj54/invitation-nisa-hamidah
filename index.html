@@ -27,7 +27,7 @@
         .card {
             width: 100%;
             aspect-ratio: 3/4;
-            background-color: white;
+            background-color: transparent;
             border-radius: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
@@ -39,15 +39,24 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .card-content {
             position: relative;
             z-index: 10;
+
+            padding: 1rem;
+            border-radius: 0.75rem;
         }
 
         .title-text {
             font-family: 'Dancing Script', cursive;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .section-background {
@@ -58,13 +67,15 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0.3;
             z-index: 1;
-            background-blend-mode: multiply;
+            filter: brightness(1.1);
+            /* Slightly brighten the image */
         }
 
-        .card {
-            background-color: rgba(255, 255, 255, 0.7);
+        /* Ensure background images are fully visible */
+        .card .section-background {
+            opacity: 1;
+            mix-blend-mode: normal;
         }
     </style>
 </head>
@@ -72,57 +83,60 @@
 <body class="bg-gray-50 text-gray-800 p-4">
     <div class="card-container">
         <div class="card">
-            <div class="section-background"
-                style="background-image: url('./asset/bacground\ 1.jpeg'); background-color: #e6f3e6;">
-            </div>
-            <div class="card-content">
+            <div class="section-background" style="background-image: url('./asset/bg\ 1-1.jpeg');"></div>
+            <div class="card-content flex flex-col items-center">
+                <br>
+                <br>
+                <br><br>
                 <h1 class="text-4xl title-text font-bold text-green-700 mb-4">Undangan Pernikahan</h1>
                 <h2 class="text-3xl title-text font-bold text-green-800 mb-2">Nisa & Sahrul</h2>
-                <p class="text-gray-600">Akan melangsungkan pernikahan</p>
+                <img src="./asset/WhatsApp_Image_2024-12-07_at_13.27.56-removebg-preview.png" alt="Pernikahan"
+                    class="w-1/2 h-auto mt-2">
             </div>
         </div>
-
+    </div>
+</body>
         <div class="card">
-            <div class="section-background"
-                style="background-image: url('./asset/bc\ 2.jpeg'); background-color: #f0f8ff;"></div>
+            <div class="section-background" style="background-image: url('./asset/bc 2.jpeg');"></div>
             <div class="card-content">
                 <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Doa</h3>
                 <p class="italic">
                     "Dan diantara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari
-                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan
-                    diantaramu rasa kasih dan sayang."
+                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan diantaramu
+                    rasa kasih dan sayang."
                     <br>
                     <span class="text-sm">(QS. AR Rum:21)</span>
                 </p>
             </div>
         </div>
 
-        <div class="card">
-            <div class="section-background"
-                style="background-image: url('./asset/bc\ 3.jpeg'); background-color: #fff0f5;"></div>
-            <div class="card-content">
-                <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Perempuan</h3>
-                <img src="/api/placeholder/128/128?text=Bride" alt="Bride" class="w-32 h-32 mx-auto mb-4 rounded-full">
-                <h4 class="font-bold">Nisa Hamdiah, S.Pd.</h4>
-                <p class="text-gray-600">Putri keempat dari Bapak Dedi Hidayatul Aziz dan Ibu Ai Latifah</p>
-            </div>
-        </div>
+<div class="card">
+    <div class="section-background" style="background-image: url('./asset/bc 3.jpeg');"></div>
+    <div class="card-content">
+        <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Perempuan</h3>
+        <img src="./asset/brige__1_-removebg-preview.png" alt="Bride" class="w-48 h-48 mx-auto mb-4">
+        <!-- Ukuran gambar diperbesar -->
+        <h4 class="font-bold text-lg">Nisa Hamdiah, S.Pd.</h4> <!-- Ukuran teks sedikit lebih kecil -->
+        <p class="text-gray-600 text-sm">Putri keempat dari Bapak Dedi Hidayatul Aziz dan Ibu Ai Latifah</p>
+        <!-- Ukuran teks lebih kecil -->
+    </div>
+</div>
+
+<div class="card">
+    <div class="section-background" style="background-image: url('./asset/bc 3.jpeg');"></div>
+    <div class="card-content">
+        <h3 class="text-2xl title-text font-bold text-green-800 mb-2">mempelai Laki-laki</h3>
+        <img src="./asset/bro__1_-removebg-preview.png" alt="Bride" class="w-48 h-48 mx-auto mb-4">
+        <!-- Ukuran gambar diperbesar -->
+        <h4 class="font-bold text-lg">sep Sahrul Magfiroh, S.Pd.</h4> <!-- Ukuran teks sedikit lebih kecil -->
+        <p class="text-gray-600 text-sm">Putra Pertama dari Bapak Ahmad Saefuloh Albar dan Ibu Ai Cucu Rahmawati</p>
+        <!-- Ukuran teks lebih kecil -->
+    </div>
+</div>
+       
 
         <div class="card">
-            <div class="section-background"
-                style="background-image: url('./asset/bc\ 3.jpeg'); background-color: #f5f5dc;"></div>
-            <div class="card-content">
-                <h3 class="text-2xl title-text font-bold text-green-800 mb-2">Mempelai Laki-laki</h3>
-                <img src="/api/placeholder/128/128?text=Groom" alt="Groom" class="w-32 h-32 mx-auto mb-4 rounded-full">
-                <h4 class="font-bold">Asep Sahrul Magfiroh, S.Pd.</h4>
-                <p class="text-gray-600">Putra Pertama dari Bapak Ahmad Saefuloh Albar dan Ibu Ai Cucu Rahmawati</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-background"
-                style="background-image: url('./asset/bc\ 4.jpeg'); background-color: #e6e6fa;">
-            </div>
+            <div class="section-background" style="background-image: url('./asset/bc 4.jpeg');"></div>
             <div class="card-content">
                 <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Akad Nikah</h3>
                 <p>Sabtu, 25 Januari 2023</p>
@@ -132,22 +146,19 @@
             </div>
         </div>
 
-    <div class="card">
-        <div class="section-background" style="background-image: url('./asset/bc\ 4.jpeg'); background-color: #e6e6fa;">
+        <div class="card">
+            <div class="section-background" style="background-image: url('./asset/bc 4.jpeg');"></div>
+            <div class="card-content">
+                <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara resepsi</h3>
+                <p>Sabtu, 25 Januari 2023</p>
+                <p>Pukul: 08.15 WIB</p>
+                <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
+                <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
+            </div>
         </div>
-        <div class="card-content">
-            <h3 class="text-2xl title-text font-bold text-green-800 mb-4">Acara resepsi</h3>
-            <p>Sabtu, 25 Januari 2023</p>
-            <p>Pukul: 08.15 WIB</p>
-            <p class="text-gray-600">Masjid Besar Al-Hidayah Banjarwangi</p>
-            <p class="text-gray-600">Ds. Banjarwangi, Kec. Banjarwangi, Kab. Garut</p>
-        </div>
-    </div>
 
         <div class="card">
-            <div class="section-background"
-                style="background-image: url('./asset/bc\ 6.jpeg'); background-color: #f0fff0;">
-            </div>
+            <div class="section-background" style="background-image: url('./asset/bc 6.jpeg');"></div>
             <div class="card-content">
                 <h3 class="text-3xl title-text font-bold text-green-800 mb-4">Terima Kasih</h3>
                 <p class="italic mb-4">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
@@ -156,89 +167,79 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="section-background" style="background-image: url('./asset/bc\ pay.jpeg'); background-color: #f0fff0;">
-        </div>
-        <div class="card-content">
-            <h3 class="text-3xl title-text font-bold text-green-800 mb-4">Terima Kasih</h3>
-            <p class="italic mb-4">Kami mengundang Anda untuk berbagi kebahagiaan di hari spesial kami</p>
-            <img src="/api/placeholder/192/192?text=Bride+Groom" alt="Bride and Groom" class="w-48 h-48 mx-auto">
-        </div>
-    </div>
-    </div>
     <footer class="text-center mt-8 p-4 bg-gray-100">
         <p>&copy; 2024 Marjan. All rights reserved.</p>
     </footer>
 
     <script>
-    // Add styles for card reveal
-   document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.card');
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            // Track which cards have been revealed to prevent re-animation
+            const revealedCards = new Set();
 
-        // Smooth, elegant text reveal
-        function elegantTextReveal(element) {
-            const text = element.textContent;
-            element.textContent = '';
-            element.style.opacity = '1';
+            // Reveal cards on scroll with smooth animation
+            function revealOnScroll() {
+                cards.forEach((card, index) => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
 
-            let index = 0;
-            function revealCharacter() {
-                if (index < text.length) {
-                    element.textContent += text[index];
-                    index++;
-                    setTimeout(revealCharacter, 50); // Adjust speed for smoothness
-                }
+                    if (cardTop < windowHeight * 0.8 && !revealedCards.has(card)) {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+
+                            // Reveal title text for this card
+                            const titleText = card.querySelector('.title-text');
+                            if (titleText) {
+                                elegantTextReveal(titleText);
+                            }
+
+                            // Mark this card as revealed
+                            revealedCards.add(card);
+                        }, index * 200);
+                    }
+                });
             }
-            revealCharacter();
-        }
 
-        // Reveal cards on scroll with smooth animation
-        function revealOnScroll() {
-            cards.forEach((card, index) => {
-                const cardTop = card.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
+            // Function to reveal title text with morphing animation
+            function elegantTextReveal(element) {
+                // Ensure full text is shown correctly from the start
+                element.style.opacity = '1';
 
-                if (cardTop < windowHeight * 0.8) {
+                // Create a temporary element to split text into characters
+                const tempElement = document.createElement('span');
+                tempElement.innerHTML = element.textContent
+                    .split('')
+                    .map(char => `<span class="char" style="opacity: 0;">${char}</span>`)
+                    .join('');
+
+                // Replace original text with character-wrapped version
+                element.innerHTML = '';
+                element.appendChild(tempElement);
+
+                // Animate characters
+                const chars = element.querySelectorAll('.char');
+                chars.forEach((char, index) => {
                     setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
+                        char.style.opacity = '1';
+                        char.style.transition = 'opacity 0.3s ease';
+                    }, index * 50);
+                });
+            }
 
-                        // Reveal title text for this card
-                        const titleText = card.querySelector('.title-text');
-                        if (titleText) {
-                            elegantTextReveal(titleText);
-                        }
-                    }, index * 200);
-                }
-            });
-        }
+            // Initial setup
+            function initializeAnimation() {
+                // Add scroll listener
+                window.addEventListener('scroll', revealOnScroll);
 
-        // Initial setup
-        function initializeAnimation() {
-            // Hide cards initially
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                // Initial reveal check
+                revealOnScroll();
+            }
 
-                // Hide title text initially
-                const titleText = card.querySelector('.title-text');
-                if (titleText) {
-                    titleText.style.opacity = '0';
-                }
-            });
-
-            // Add scroll listener
-            window.addEventListener('scroll', revealOnScroll);
-
-            // Initial reveal check
-            revealOnScroll();
-        }
-
-        // Initialize
-        initializeAnimation();
-    });
-   </script>
+            // Initialize
+            initializeAnimation();
+        });
+    </script>
 </body>
 
 </html>
